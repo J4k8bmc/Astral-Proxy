@@ -1,6 +1,6 @@
 # Astral Proxy
 
-A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats, floating nametags, rush/target analysis, and behavior-based AntiCheat. Runs entirely on your own machine; nothing you do is sent anywhere except the API calls each feature needs (Hypixel, Bordic/Aurora, Urchin, Seraph - only if you set a key for it).
+A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats, floating nametags, rush/target analysis, and behavior-based AntiCheat. Runs entirely on your own machine; nothing you do is sent anywhere except the API calls each feature needs (Hypixel, Aurora, Urchin, Seraph - only if you set a key for it).
 
 > **Beta.** Most features are stable, but the AntiCheat checks in particular are heuristic-based and will occasionally false-flag or miss things. Treat a flag as a hint to watch someone more closely, not proof.
 
