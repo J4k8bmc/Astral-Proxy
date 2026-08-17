@@ -19,7 +19,7 @@ A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats,
 
 To remove the hosts entry later (e.g. to play without the proxy), just delete that line from the hosts file.
 
-##Recommended settings (for Lunar/Badlion or any other client)
+## Recommended settings (for Lunar/Badlion or any other client)
 1. Go to tab mod settings and make sure that players ping is turned off. (Hide player ping) Make sure you have header and footer visible.
 2. Go to hypixel mods, togglechat. Once you're there make sure abbreviate chat channels and abbreviate ranks are both enabled(people who don't like abbreviated messages, please keep chat channels enabled since testing was performed on it). 
 
