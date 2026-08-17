@@ -1,10 +1,10 @@
-Astral Proxy
+# Astral Proxy
 
 A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats, floating nametags, rush/target analysis, and behavior-based AntiCheat. Runs entirely on your own machine; nothing you do is sent anywhere except the API calls each feature needs (Hypixel, Bordic/Aurora, Urchin, Seraph - only if you set a key for it).
 
 > **Beta.** Most features are stable, but the AntiCheat checks in particular are heuristic-based and will occasionally false-flag or miss things. Treat a flag as a hint to watch someone more closely, not proof.
 
-Setup
+## Setup
 
 1. Download the latest `.exe` from [Releases](../../releases)
 2. Press windows + r and copy this PATH: (`C:\Windows\System32\drivers\etc\hosts`) and press enter.
@@ -19,15 +19,15 @@ Setup
 
 To remove the hosts entry later (e.g. to play without the proxy), just delete that line from the hosts file.
 
-Commands
+## Commands
 
-Config
+### Config
 | Command | Description |
 |---|---|
 | `/ap config` | Main settings menu (snipe messages, safelist, nick override, API keys) |
 | `/tabconfig` | Tab column formatting menu |
 
-Toggles
+### Toggles
 | Command | Description |
 |---|---|
 | `/pchat` | Shows your messages in party chat |
@@ -50,7 +50,7 @@ Toggles
 | `/shortenranks` | Shows `[M++]` instead of `[MVP++]` in tab/nametags |
 | `/brackets` | Wrap star/prestige level in `[brackets]` everywhere it's shown |
 
-Info lookups
+### Info lookups
 | Command | Description |
 |---|---|
 | `/info <name>` | Rank, stars, FKDR/WLR + tags |
@@ -61,7 +61,7 @@ Info lookups
 | `/finals <count>` | Find players near a given finals count |
 | `/beds <count>` | Find players near a given beds count |
 
-Other
+### Other
 | Command | Description |
 |---|---|
 | `/1s` `/2s` `/3s` `/4s` `/44s` | Quick-join Bedwars Solos/Doubles/Threes/Fours/4v4 |
@@ -74,7 +74,7 @@ Other
 | `/blocknicks` | Blocks every nicked player in your current game; unblocks resolved ones once it ends |
 | `/antycheat [check]` | Toggle AntiCheat overall, or one specific check |
 
-AntiCheat checks (`/antycheat <check>`)
+### AntiCheat checks (`/antycheat <check>`)
 | Check | Detects |
 |---|---|
 | `noslow` | Sprinting and blocking at once without the slowdown that should cause |
@@ -88,6 +88,6 @@ AntiCheat checks (`/antycheat <check>`)
 | `fastmine` | Breaking blocks faster than any legitimate tool/enchant combo allows |
 | `aimassist` | Suspiciously precise aim lock onto a target across several swings |
 
-License
+## License
 
 All rights reserved. No redistribution, modification, or reverse engineering permitted without written permission from the author.
