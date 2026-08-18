@@ -2,15 +2,15 @@
 
 A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats, floating nametags, rush/target analysis, and behavior-based AntiCheat. Runs entirely on your own machine; nothing you do is sent anywhere except the API calls each feature needs (Hypixel, Aurora, Urchin, Seraph - only if you set a key for it).
 
-> **Beta.** Most features are stable, but the AntiCheat checks in particular are heuristic-based and will occasionally false-flag or miss things. Treat a flag as a hint to watch someone more closely, not proof.
+> **Beta.** Most features are stable, but the AntiCheat checks in particular are heuristic-based and will occasionally false-flag or miss things. Do not treat it as proof of someone cheating.
 
 ## Setup
 
 1. Download the latest `.exe` from [Releases](../../releases)
-2. Press windows + r and copy this PATH: (`C:\Windows\System32\drivers\etc\hosts`) and press enter.
+2. Press windows + r and copy this PATH: (`C:\Windows\System32\drivers\etc`) and press enter.
 3. (Enable desktop icons if you have them hidden) then drag the "hosts" file to desktop.
 4. Right click on it and press "Edit in notepad". Scroll down and paste this line in the bottom: `127.0.0.1 mc.hypixel.net`.
-5. Click save (Ctrl + s) and drag the file back into `C:\Windows\System32\drivers\etc\hosts` folder.
+5. Click save (Ctrl + s) and drag the file back into `C:\Windows\System32\drivers\etc` folder.
 6. Launch terminal and type `ipconfig /flushdns` or reboot computer.
 7. Launch `Astral Proxy.exe`, click on the `PAUSED` Proxy Status and allow public and private network access.
 8. In the minecraft server list add these IP's: `proxy.hypixel.net`or`play.hypixel.net`(Your hypixel IP from now on) and add the proxy IP: `hypixel.net`. Make sure you have set Server Resource Pack to Enabled to ensure tabstats alignment.
