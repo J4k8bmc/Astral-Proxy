@@ -37,10 +37,9 @@ The tab list can show prestige, player names, tags, winstreak, FKDR, WLR, kills,
 ## Connect for the first time
 
 1. Download the portable Windows executable from [Releases](../../releases) and start it.
-2. Leave the target in the desktop window set to `proxy.hypixel.net`. Click the proxy status control and wait for the console to report that it is listening on port `25565`.
-3. In Minecraft 1.8.9, add a multiplayer server named **Astral Proxy** with address **`127.0.0.1:25565`**. Join this entry while the application is running. Your ordinary Hypixel entry remains available for direct connections.
-4. If prompted, complete Microsoft device sign-in for the Minecraft account you are playing on. The desktop console displays the verification instructions. Treat the temporary sign-in code as private.
-5. Type `/ap 1` in chat. Use `/ap config` for proxy settings and `/tabconfig` to choose columns. The desktop window also has quick settings and a Hypixel API status panel.
+2. Turn proxy on and add server IP 'proxy.hypixel.net' or '127.0.0.1'(if you do not want to interact with windows host files) and ensure resource packs are set to enabled.
+4. When prompted, complete Microsoft device sign-in for the Minecraft account you are playing on. The desktop console displays the verification instructions. This is required for the proxy to decrypt hypixel packets(otherwise it wouldn't work).
+5. Set your keys by using '/setkey (key)' one by one and if you are playing nicked do '/nick (your nick)' so proxy knows on which team you are playing.
 
 **Client-specific server detection.** Some client mods enable their Hypixel features according to the address in the server list. If you need a Hypixel hostname for that purpose, an optional Windows hosts entry is `127.0.0.1 mc.hypixel.net`. Edit `%SystemRoot%\System32\drivers\etc\hosts` as administrator, run `ipconfig /flushdns`, and join **`mc.hypixel.net`**. Keep the proxy's upstream target set to **`proxy.hypixel.net`**. Remove that exact hosts entry to restore normal resolution.
 
