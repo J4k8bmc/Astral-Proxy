@@ -4,13 +4,43 @@ Astral Proxy is a Windows desktop application for Minecraft Java Edition 1.8.9. 
 
 The tab list can show prestige, player names, tags, winstreak, FKDR, WLR, kills, deaths, network level and ping. Number columns share a layout across the roster, ratios align at the decimal point, and the header follows the visible columns. A small server resource pack supplies the invisible glyphs used for precise spacing.
 
+## Gallery
+
+### Match start
+
+![Tab list, player tag, and the opening rush and target assessment](gallery/match-start-1.png)
+
+![Tab list, player tag, and the opening rush and target assessment](gallery/match-start-2.png)
+
+![Tab list, player tag, and the opening rush and target assessment](gallery/match-start-3.png)
+
+### Desktop dashboard
+
+![Astral Proxy desktop GUI](gallery/dashboard.png)
+
+### In-game settings
+
+![Settings available through /ap config](gallery/ap-config.png)
+
+### Tab list settings
+
+![Columns and display options in /tabconfig](gallery/tabconfig.png)
+
+### Command reference
+
+![/ap 1 — general settings and player lookups](gallery/ap-page-1.png)
+
+![/ap 2 — match tools and queue commands](gallery/ap-page-2.png)
+
+![/ap 3 — additional settings and diagnostics](gallery/ap-page-3.png)
+
 ## Connect for the first time
 
 1. Download the portable Windows executable from [Releases](../../releases) and start it.
 2. Leave the target in the desktop window set to `proxy.hypixel.net`. Click the proxy status control and wait for the console to report that it is listening on port `25565`.
 3. In Minecraft 1.8.9, add a multiplayer server named **Astral Proxy** with address **`127.0.0.1:25565`**. Join this entry while the application is running. Your ordinary Hypixel entry remains available for direct connections.
 4. If prompted, complete Microsoft device sign-in for the Minecraft account you are playing on. The desktop console displays the verification instructions. Treat the temporary sign-in code as private.
-5. Type `/ap (1-3)` in chat. Use `/ap config` for proxy settings and `/tabconfig` to choose columns. The desktop window also has quick settings and a Hypixel API status panel.
+5. Type `/ap 1` in chat. Use `/ap config` for proxy settings and `/tabconfig` to choose columns. The desktop window also has quick settings and a Hypixel API status panel.
 
 **Client-specific server detection.** Some client mods enable their Hypixel features according to the address in the server list. If you need a Hypixel hostname for that purpose, an optional Windows hosts entry is `127.0.0.1 mc.hypixel.net`. Edit `%SystemRoot%\System32\drivers\etc\hosts` as administrator, run `ipconfig /flushdns`, and join **`mc.hypixel.net`**. Keep the proxy's upstream target set to **`proxy.hypixel.net`**. Remove that exact hosts entry to restore normal resolution.
 
@@ -24,8 +54,6 @@ Enable **Server Resource Packs** for your Astral server entry, then turn on **Pi
 | `/tabconfig` | Select individual columns and options for tags, nicknames and teammate colors. |
 | `/resourcepack` | Toggle exact spacing and offer the font pack when enabling it. |
 | `/resourcepack reminder [on\|off]` | Control the once-per-match tip for a missing pack. Defaults to on. |
-| `/tabprobe [names...]` | Compare reference bars and measure alignment for specific usernames. |
-| `/tabprobe --badges` | Compare prestige, `[NICK]`, `[LS]` and `[B]` using the active client font. |
 
 ## Match tools
 
@@ -70,7 +98,7 @@ npm run lint
 npm run dist
 ```
 
-`npm run build` produces the Vite frontend in `dist\`. `npm run dist` builds that frontend and packages the desktop application with Electron Builder. The portable release is **`dist-build\Astral Proxy.exe`**. A local development launch after building the frontend is `npx electron .`.
+`npm run build` produces the Vite frontend in `dist\`. `npm run dist` builds that frontend and packages the desktop application with Electron Builder. The portable release is **`dist-build\Astral Proxy v1.0.exe`**. A local development launch after building the frontend is `npx electron .`.
 
 | Path | Responsibility |
 | --- | --- |
