@@ -1,96 +1,84 @@
 # Astral Proxy
 
-A local Minecraft 1.8.9 proxy for Hypixel Bedwars - denicking, custom tab stats, floating nametags, rush/target analysis, and behavior-based AntiCheat. Runs entirely on your own machine; nothing you do is sent anywhere except the API calls each feature needs (Hypixel, Aurora, Urchin, Seraph - only if you set a key for it).
+Astral Proxy is a Windows desktop application for Minecraft Java Edition 1.8.9. It sits between your game and Hypixel, reads the Bed Wars roster and match events, and sends an annotated tab list, nametags and chat messages back to your client. Keep your existing Minecraft installation and launch the proxy when you want to use it.
 
-> **Beta.** Most features are stable, but the AntiCheat checks in particular are heuristic-based and will occasionally false-flag or miss things. Do not treat it as proof of someone cheating.
+The tab list can show prestige, player names, tags, winstreak, FKDR, WLR, kills, deaths, network level and ping. Number columns share a layout across the roster, ratios align at the decimal point, and the header follows the visible columns. A small server resource pack supplies the invisible glyphs used for precise spacing.
 
-## Setup
+## Connect for the first time
 
-1. Download the latest `.exe` from [Releases](../../releases)
-2. Press windows + r and copy this PATH: (`C:\Windows\System32\drivers\etc`) and press enter.
-3. (Enable desktop icons if you have them hidden) then drag the "hosts" file to desktop.
-4. Right click on it and press "Edit in notepad". Scroll down and paste this line in the bottom: `127.0.0.1 mc.hypixel.net`.
-5. Click save (Ctrl + s) and drag the file back into `C:\Windows\System32\drivers\etc` folder.
-6. Launch terminal and type `ipconfig /flushdns` or reboot computer.
-7. Launch `Astral Proxy.exe`, click on the `PAUSED` Proxy Status and allow public and private network access.
-8. In the minecraft server list add these IP's: `proxy.hypixel.net`or`play.hypixel.net`(Your hypixel IP from now on) and add the proxy IP: `hypixel.net`. Make sure you have set Server Resource Pack to Enabled to ensure tabstats alignment.
-9. Set your API keys once it's running - when you join on the proxy ip - `hypixel.net` you will now have access to several commands. Do: `/setkey <|urchin|seraph|aurora> <key>`for every key.
-10. Lastly regenerate/create hypixel API key by clicking the "REGENERATE" button inside the app. Once you log in and copy the key simply press on "REPLACE" button and you're ready to play.
+1. Download the portable Windows executable from [Releases](../../releases) and start it.
+2. Leave the target in the desktop window set to `proxy.hypixel.net`. Click the proxy status control and wait for the console to report that it is listening on port `25565`.
+3. In Minecraft 1.8.9, add a multiplayer server named **Astral Proxy** with address **`127.0.0.1:25565`**. Join this entry while the application is running. Your ordinary Hypixel entry remains available for direct connections.
+4. If prompted, complete Microsoft device sign-in for the Minecraft account you are playing on. The desktop console displays the verification instructions. Treat the temporary sign-in code as private.
+5. Type `/ap (1-3)` in chat. Use `/ap config` for proxy settings and `/tabconfig` to choose columns. The desktop window also has quick settings and a Hypixel API status panel.
 
-To remove the hosts entry later (e.g. to play without the proxy), just delete that line from the hosts file.
+**Client-specific server detection.** Some client mods enable their Hypixel features according to the address in the server list. If you need a Hypixel hostname for that purpose, an optional Windows hosts entry is `127.0.0.1 mc.hypixel.net`. Edit `%SystemRoot%\System32\drivers\etc\hosts` as administrator, run `ipconfig /flushdns`, and join **`mc.hypixel.net`**. Keep the proxy's upstream target set to **`proxy.hypixel.net`**. Remove that exact hosts entry to restore normal resolution.
 
-## Recommended settings (for Lunar/Badlion or any other client)
-1. Go to tab mod settings and make sure that players ping is turned off. (Hide player ping) Make sure you have header and footer visible.
-2. Go to hypixel mods, togglechat. Once you're there make sure abbreviate chat channels and abbreviate ranks are both enabled(people who don't like abbreviated messages, please keep chat channels enabled since testing was performed on it). 
+## Set up the tab list
 
-## Commands
+Enable **Server Resource Packs** for your Astral server entry, then turn on **Pixel-Perfect Alignment** in the desktop app or toggle `/resourcepack` in chat. The proxy serves the pack from your machine. It uses ordinary spaces until the client reports that the pack loaded. Show the tab header and footer in your client's HUD settings. If the client adds a second ping column, hide its own ping display.
 
-### Config
-| Command | Description |
-|---|---|
-| `/ap config` | Main settings menu (snipe messages, safelist, nick override, API keys) |
-| `/tabconfig` | Tab column formatting menu |
+| Command | What it does |
+| --- | --- |
+| `/tabstats` | Toggle the Bed Wars tab overlay. The custom match columns appear after the game starts. |
+| `/tabconfig` | Select individual columns and options for tags, nicknames and teammate colors. |
+| `/resourcepack` | Toggle exact spacing and offer the font pack when enabling it. |
+| `/resourcepack reminder [on\|off]` | Control the once-per-match tip for a missing pack. Defaults to on. |
+| `/tabprobe [names...]` | Compare reference bars and measure alignment for specific usernames. |
+| `/tabprobe --badges` | Compare prestige, `[NICK]`, `[LS]` and `[B]` using the active client font. |
 
-### Toggles
-| Command | Description |
-|---|---|
-| `/pchat` | Shows your messages in party chat |
-| `/tabstats` | Custom tab-list stats rendering |
-| `/nametags` | Floating in-world nametag badges |
-| `/resourcepack` | Exact-pixel tab alignment via a small resource pack |
-| `/rbw` | Ranked Bedwars mode - locks non-essential features, enables nametags |
-| `/skindenicker` | Resolve nicked players by their embedded skin profile name |
-| `/numdenicker` | Resolve nicked players by kill-feed counts |
-| `/denickstats` | Show stats automatically after a denick |
-| `/pregamestats` | Show player stats when they talk in queue |
-| `/alerts` | Show tag descriptions when the game starts |
-| `/rushmsg` | Auto rush-direction analysis |
-| `/targetmsg [wlr]` | Auto priority-target analysis (`wlr` toggles showing WLR in it) |
-| `/partycounter` | Announce party join/leave counts |
-| `/autobusy` | `/status busy` on queue, `/status online` after 60s back in the lobby |
-| `/blockstats` | Auto stats+tags+unblock for resolved blocklist entries |
-| `/prefix` | Show the `[AP]` tag on every message |
-| `/debug` | Verbose `[DEBUG]` chat messages |
-| `/shortenranks` | Shows `[M++]` instead of `[MVP++]` in tab/nametags |
-| `/brackets` | Wrap star/prestige level in `[brackets]` everywhere it's shown |
+## Match tools
 
-### Info lookups
-| Command | Description |
-|---|---|
-| `/info <name>` | Rank, stars, FKDR/WLR + tags |
-| `/stats <name>` | Rank, stars, full BW stats + winstreak |
-| `/tags <name>` | Urchin/Seraph cheater tags |
-| `/ws <name>` | Winstreak (current + historical highs per mode) |
-| `/ping <name>` | Ping history |
-| `/finals <count>` | Find players near a given finals count |
-| `/beds <count>` | Find players near a given beds count |
+| Feature | Commands and behavior |
+| --- | --- |
+| Player lookups | `/info <name>` combines rank, stars, ratios and tags. `/stats <name>` gives a fuller Bed Wars breakdown. `/tags`, `/ws` and `/ping` query individual records for a name. |
+| Nametags | `/nametags`, `/shortenranks`, `/brackets`, `/pingcolour` and `/nickcolour` control labels and formatting. |
+| Nick handling | `/nick <name>` sets your own current nick. `/skindenicker` uses skin-profile information and `/numdenicker` matches numeric evidence. `/finals <count>` and `/beds <count>` search for candidates. `/denickstats` controls follow-up messages. Matches are estimates. |
+| Pregame and match analysis | `/pregamestats`, `/alerts`, `/rushmsg` and `/targetmsg [wlr]` control player summaries, tag explanations and rush or target suggestions. Bow-hit chat can include an estimated distance when the proxy can associate the hit with an arrow. |
+| Party and chat | `/pchat` shares supported proxy alerts with party chat. `/partycounter` tracks joins and leaves. `/showimportant` controls alert filtering. Configure up to ten messages with `/ap config` and send one with `/sm [1–10]`. |
+| Queue and status | Enable `/queuecommands` for `/1s`, `/2s`, `/3s`, `/4s` and `/44s`. `/betterqueue` controls the pregame decoy filter. `/autostatus` changes status on queue, lobby and AFK transitions. |
+| List management | `/safelist` manages exemptions. `/myign` controls name-mention lookups. `/blocknicks` can change your Hypixel block list and `/blockstats` controls related lookups. |
+| Ranked and behavioral checks | `/rbw` enables the ranked preset and locks selected options. `/antycheat` toggles the detector. The two checks in this release are `scaff` and `legitscaff`. Their alerts are heuristic and can be wrong. |
+| Help and diagnostics | `/ap 1`, `/ap 2` and `/ap 3` show in-game help. `/testapis` checks providers. `/debug` enables verbose diagnostics in chat and the local log. |
 
-### Other
-| Command | Description |
-|---|---|
-| `/1s` `/2s` `/3s` `/4s` `/44s` | Quick-join Bedwars Solos/Doubles/Threes/Fours/4v4 |
-| `/sm [1-10]` | Send a random (or specific) snipe message |
-| `/testapis` | Check API key status |
-| `/setkey <type> <key>` | Set an API key |
-| `/myign <name\|on\|off>` | Auto-lookup whoever pings your name |
-| `/nick <name>` | Tell the proxy your current nick, so self-detection still works while nicked |
-| `/safelist add\|remove\|preview\|clear\|autoadd <ign>` | Manage the safelist (never denicked, tagged, or flagged) |
-| `/blocknicks` | Blocks every nicked player in your current game; unblocks resolved ones once it ends |
-| `/antycheat [check]` | Toggle AntiCheat overall, or one specific check |
+Check the server rules before using a feature. Hypixel's API policy specifically addresses de-anonymization of nicked players and handling of developer keys. A toggle or the ranked preset does not establish permission to use a feature. [Hypixel modification rules](https://support.hypixel.net/hc/en-us/articles/6472550754962-Hypixel-Allowed-Modifications) · [Hypixel API policies](https://developer.hypixel.net/policies/)
 
-### AntiCheat checks (`/antycheat <check>`)
-| Check | Detects |
-|---|---|
-| `noslow` | Sprinting and blocking at once without the slowdown that should cause |
-| `autoblockorangeb` | Attacking while still holding block up |
-| `autoblockorangec` | Blocking perfectly timed right after taking a hit |
-| `sprint` | Sprinting in a direction vanilla physics shouldn't allow |
-| `scaff` | Placing blocks with a suspiciously brief crouch tap |
-| `legitscaff` | Bridging faster than legitimately possible while aiming down |
-| `scaffnoaim` | Bridging faster than legitimately possible without aiming down at all |
-| `velocity` | Suppressed knockback after taking a hit |
-| `fastmine` | Breaking blocks faster than any legitimate tool/enchant combo allows |
-| `aimassist` | Suspiciously precise aim lock onto a target across several swings |
+## Connections, keys and local files
+
+The application opens a Minecraft listener on port `25565` on all IPv4 interfaces. For a single-PC setup, connect over loopback and keep inbound access restricted in Windows Firewall. The alignment pack uses a separate loopback-only HTTP listener.
+
+Microsoft/Minecraft authentication and Mojang profile lookups support account and skin handling. Hypixel supplies player statistics, Urchin supplies player tags, and the Aurora/Bordic integration supplies ping and winstreak data. Some lookups require a configured provider key. The desktop **Replace** control reads the Hypixel key from the clipboard. The local command syntax is `/setkey <provider> <key>`, with provider names `hypixel`, `urchin`, `aurora` and `bordic`. Use credentials only in accordance with the provider's terms. Bordic requests include the configured key in the request URL.
+
+Astral stores its runtime data under **`%APPDATA%\Astral Proxy\`**:
+
+| File or directory | Contents |
+| --- | --- |
+| `astral-config.json` | Settings, safelist and configured API keys. Keys are stored in plain text. |
+| `auth-cache\` | Microsoft/Minecraft authentication cache used between connections. |
+| `reconnect-cache.json` | Saved match and roster state used when reconnecting. |
+| `crash.log` | Local diagnostics and verbose messages when debugging is enabled. |
+
+Keep this directory private. Redact sign-in codes, chat commands and identifiers before sharing screenshots or logs. The portable executable carries the application code and bundled font assets. Each user's configuration is created at runtime.
+
+## Build on Windows
+
+From the project root with Node.js and npm installed:
+
+```powershell
+npm ci
+npm run lint
+npm run dist
+```
+
+`npm run build` produces the Vite frontend in `dist\`. `npm run dist` builds that frontend and packages the desktop application with Electron Builder. The portable release is **`dist-build\Astral Proxy.exe`**. A local development launch after building the frontend is `npx electron .`.
+
+| Path | Responsibility |
+| --- | --- |
+| `main.cjs` | Electron main process, Minecraft connections, packet handling, player state, commands, HTTP lookups and tab layout. |
+| `preload.cjs` | IPC bridge for desktop controls, status, clipboard replacement and settings. |
+| `src/` | React desktop interface and styling. |
+| `assets/tabalign-pack/` | Font measurements and source assets used to generate the alignment ZIP. |
+| `scripts/` | Windows release packaging helpers. |
 
 ## License
 
