@@ -37,15 +37,15 @@ The tab list can show prestige, player names, tags, winstreak, FKDR, WLR, kills,
 ## Connect for the first time
 
 1. Download the portable Windows executable from [Releases](../../releases) and start it.
-2. Turn proxy on and add server IP 'proxy.hypixel.net' or '127.0.0.1'(if you do not want to interact with windows host files) and ensure resource packs are set to enabled.
+2. Turn proxy on and add server IP `proxy.hypixel.net` or `127.0.0.1`(if you do not want to interact with windows host files) and ensure resource packs are set to enabled.
 4. When prompted, complete Microsoft device sign-in for the Minecraft account you are playing on. The desktop console displays the verification instructions. This is required for the proxy to decrypt hypixel packets(otherwise it wouldn't work).
-5. Set your keys by using '/setkey (key)' one by one and if you are playing nicked do '/nick (your nick)' so proxy knows on which team you are playing.
+5. Set your keys by using `/setkey (key)` one by one. If you are playing nicked set your nick using `/nick (your nick)` so proxy knows on which team you are playing.
 
-**Client-specific server detection.** Some client mods enable their Hypixel features according to the address in the server list. If you need a Hypixel hostname for that purpose, an optional Windows hosts entry is `127.0.0.1 mc.hypixel.net`. Edit `%SystemRoot%\System32\drivers\etc\hosts` as administrator, run `ipconfig /flushdns`, and join **`mc.hypixel.net`**. Keep the proxy's upstream target set to **`proxy.hypixel.net`**. Remove that exact hosts entry to restore normal resolution.
+**Client-specific server detection.** `This requires PC administrator permissions.` Some client mods enable their Hypixel features according to the address in the server list. If you want them to work use IP `proxy.hypixel.net` and add a line in windows hosts file `127.0.0.1 mc.hypixel.net`. In order to do that press `win + r` then paste `(systemdriveletter):\windows\system32\drivers\etc` and press enter. When you are there drag file `hosts` into desktop and by pressing right click, click `Edit using notepad` scroll down and paste line `127.0.0.1 mc.hypixel.net` save and close. Drag the file back to folder in `(systemdriveletter):\windows\system32\drivers\etc` and either restart the PC or open powershell/command promt as administrator and paste `ipconfig /flushdns`. When done refresh minecraft server list and you should be able to join with hypixel mods enabled.
 
 ## Set up the tab list
 
-Enable **Server Resource Packs** for your Astral server entry, then turn on **Pixel-Perfect Alignment** in the desktop app or toggle `/resourcepack` in chat. The proxy serves the pack from your machine. It uses ordinary spaces until the client reports that the pack loaded. Show the tab header and footer in your client's HUD settings. If the client adds a second ping column, hide its own ping display.
+Do /tabconfig while in game or in dashboard scroll until you see `TAB`. Toggle settings to your preferances and make sure you have /resourcepack enabled in both minecraft server settings and proxy. 
 
 | Command | What it does |
 | --- | --- |
